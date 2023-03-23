@@ -1,24 +1,42 @@
-import Container from 'react-bootstrap/Container';
+
+import React from 'react'
+import {Routes, Route, Link } from 'react-router-dom'
+
+import Inicio from './Inicio'
+import Pc from './Pc'
+import Celulares from './Celulares'
+import Notebook from './Notebook'
+import Error from './Error'
+import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import React from 'react';
-//import { Link } from 'react-router-dom'
-import CartWidget from "./CartWidget.js"
+import CartWidget from "./CartWidget"
+
 
 
 function NavBar(){
     return (
-        <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">Isa</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Inicio</Nav.Link>
-            <Nav.Link href="#features">Productos</Nav.Link>
-            <Nav.Link href="#pricing">Carrito</Nav.Link>
-            <CartWidget />
-          </Nav>
-        </Container>
-      </Navbar>  
+      
+      <div className="container">
+        <div className="btn-group">
+
+          <Link to="/" className='btn btn-sucess'>Home </Link>
+          <Link to="/pc" className='btn btn-danger'>Pc </Link>
+          <Link to="/celulares" className='btn btn-dark'>Celulares </Link>
+          <Link to="/notebook" className='btn btn-danger'>Notebooks </Link>
+
+          <Routes>
+              <Route path="/" exact element={<Inicio/>}/>
+              <Route path="/pc" exact element={<Pc/>}/>
+              <Route path="/celulares" exact element={<Celulares/>}/>
+              <Route path="/notebook" exact element={<Notebook/>}/>
+              <Route path="*" exact element={<Error/>}/>
+              
+          </Routes>
+          
+          </div>
+       </div>  
+       
     )   
 }
 
