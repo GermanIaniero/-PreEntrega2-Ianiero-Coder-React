@@ -1,43 +1,45 @@
 
-import React from 'react'
-import {Routes, Route, Link } from 'react-router-dom'
-
-import Inicio from './Inicio'
-import Pc from './Pc'
-import Celulares from './Celulares'
-import Notebook from './Notebook'
-import Error from './Error'
-import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
-import CartWidget from "./CartWidget"
+import React from 'react';
+import {NavLink, Link } from 'react-router-dom';
+import CartWidget from "./CartWidget";
 
 
-
-function NavBar(){
-    return (
-      
-      <div className="container">
-        <div className="btn-group">
-
-          <Link to="/" className='btn btn-sucess'>Home </Link>
-          <Link to="/pc" className='btn btn-danger'>Pc </Link>
-          <Link to="/celulares" className='btn btn-dark'>Celulares </Link>
-          <Link to="/notebook" className='btn btn-danger'>Notebooks </Link>
-
-          <Routes>
-              <Route path="/" exact element={<Inicio/>}/>
-              <Route path="/pc" exact element={<Pc/>}/>
-              <Route path="/celulares" exact element={<Celulares/>}/>
-              <Route path="/notebook" exact element={<Notebook/>}/>
-              <Route path="*" exact element={<Error/>}/>
-              
-          </Routes>
-          
+const NavBar = () => {
+  return(
+      <div className="container" id="navbar">
+          <div className="row">
+                      <div className="col-6">
+                          <nav className="navbar navbar-expand-lg ">
+                              <div className="container-fluid">
+                                  <Link className="navbar-brand" to={"/"}><img src="../img/proyecto1040.png" alt="proyecto" width={100} /></Link>
+                                  <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                  <span className="navbar-toggler-icon"></span>
+                                  </button>
+                                  <div className="collapse navbar-collapse" id="navbarNav">
+                                  <ul className="navbar-nav">
+                                      <li className="nav-item">
+                                      <NavLink className="nav-link" aria-current="page" to={"/category/celulares"} >Celulares</NavLink>
+                                      </li>
+                                      <li className="nav-item">
+                                      <NavLink className="nav-link" to={"/category/notebooks"}>Notebooks</NavLink>
+                                      </li>
+                                      <li className="nav-item">
+                                      <NavLink className="nav-link" to={"/category/pcs"}>Pcs</NavLink>
+                                      </li>
+                                      
+                                  </ul>
+                                  </div>
+                              </div>
+                          </nav>
+                      </div>
+                      <div className="col-6 d-flex justify-content-end  align-items-center">
+                          <CartWidget/>
+                      </div>        
           </div>
-       </div>  
-       
-    )   
+      </div>
+      
+          
+  )
 }
 
-export default NavBar
+export default NavBar;

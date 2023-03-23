@@ -1,20 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import { ItemList } from './ItemList';
+import React from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import arrayProductos from "./json/arrayProductos.json"
+import ItemList from "./ItemList"
+
 
 const ItemListContainer = () => {
-  const [prods, setProds] = useState([]);
+  const [item, setItem] = useState([])
+  const {id} = useParams ();
+
   useEffect(() => {
-    fetch('https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/Products') //pido los datos
-      .then((res) => res.json()) //lo traduzco
-      .then((respuesta) => setProds(respuesta)) //los almacenamos
-      .catch((error) => console.log(error));
-  }, []);
+      const  promesa = new Promise((resolve) => {
+           setTimeout(() => {
+              resolve(id ? arrayProductos.filter(item => item.categoria === id) : arrayProductos)
+          }, 2000)
+      });
+
+      promesa.then((data) => {
+          setItem(data)
+
+      })
+  },[id]);
 
   return (
-    <>
-      <ItemList prods={prods} />
-    </>
-  );
-};
+      <div className="container">
+          <div className="row">
+              <ItemList item={item} />
+              
+          </div>
+    
+      </div>       
+  )
+}
 
 export default ItemListContainer;
