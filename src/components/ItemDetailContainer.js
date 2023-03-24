@@ -14,7 +14,7 @@ const ItemDetailContainer = () => {
         const promesa = new Promise((resolve) => {
             console.log(id);
             setTimeout(() => {
-                resolve(arrayProductos.find(item => item.id  === parseInt(id)))
+                resolve(arrayProductos.find(item => item.id  === id))
             }, 2000);
         }, []);
 

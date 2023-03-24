@@ -17,6 +17,12 @@ function App() {
                 <Route path= '*' exact element={<Error />} />
           </Routes>           
         </BrowserRouter>
+        <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
+        © 2023 Copyright:
+        <a className='text-reset fw-bold' href='#'>
+          Tienda Isa
+        </a>
+      </div>
     </div>
     
   );

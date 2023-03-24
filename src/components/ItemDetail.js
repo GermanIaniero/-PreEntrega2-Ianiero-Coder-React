@@ -8,10 +8,10 @@ const ItemDetail = ({item}) => {
             <div className="row" id="itemdetail">
                 <div className="col-md-4 offset-md-4">
                     <img src={item.Img} className="img-fluid" alt={item.Descrip} />
-                    <h1>{item.marca}</h1>
-                    <p>{item.modelo}</p>
+                    <h1>{item.Marca}</h1>
+                    <p>{item.Modelo}</p>
                     <p>{item.Descrip}</p>
-                    <p>${item.precio} </p>
+                    <p>${item.Precio} </p>
                     
                 </div>
                 <div>
